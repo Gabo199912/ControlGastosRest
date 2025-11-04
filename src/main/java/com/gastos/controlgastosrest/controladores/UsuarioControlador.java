@@ -57,6 +57,7 @@ public class UsuarioControlador {
         response.put("usuarios", usuarios);
         response.put("STATUS", 200);
         return ResponseEntity.ok(response);
+
     }
 
 }
