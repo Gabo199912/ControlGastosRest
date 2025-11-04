@@ -5,6 +5,7 @@ import com.gastos.controlgastosrest.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -41,5 +42,9 @@ public class UsuarioServicio {
     public boolean existeUsuario(String nombre){
         boolean ok =  usuarioRepositorio.existsByNombre(nombre);
         return ok;
+    }
+
+    public List<UsuariosModelo> listarTodosUsuarios(){
+        return usuarioRepositorio.findAll();
     }
 }

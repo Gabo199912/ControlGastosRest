@@ -5,12 +5,10 @@ import com.gastos.controlgastosrest.modelos.UsuariosModelo;
 import com.gastos.controlgastosrest.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
@@ -51,5 +49,14 @@ public class UsuarioControlador {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/listar")
+    public ResponseEntity<?> listarUsuarios(){
+        List<UsuariosModelo> usuarios =  usuarioServicio.listarTodosUsuarios();
+
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("usuarios", usuarios);
+        response.put("STATUS", 200);
+        return ResponseEntity.ok(response);
+    }
 
 }
