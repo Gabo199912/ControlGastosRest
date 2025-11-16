@@ -5,6 +5,7 @@ import com.gastos.controlgastosrest.repositorio.CategoriaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -32,5 +33,9 @@ public class CategoriaServicio {
 
         categoriaRepositorio.deleteById(idCategoria);
         return true;
+    }
+
+    public List<CategoriaModelo> buscarCategorias(){
+        return categoriaRepositorio.findAll();
     }
 }

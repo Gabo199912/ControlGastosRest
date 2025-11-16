@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
@@ -23,7 +24,7 @@ public class CategoriaControlador {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity guardarUsuario(@RequestBody CategoriaModelo categoria) {
+    public ResponseEntity<?> guardarUsuario(@RequestBody CategoriaModelo categoria) {
         String nombre = categoria.getNombre();
         String tipo = categoria.getTipo();
 
@@ -39,5 +40,12 @@ public class CategoriaControlador {
         response.put("mensaje", "Categoria creada");
         response.put("STATUS", 200);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/listar")
+    public ResponseEntity<?> listarCategorias(){
+        List<CategoriaModelo> categorias = categoriaServicio.buscarCategorias();
+
+        return ResponseEntity.ok(categorias);
     }
 }
