@@ -1,15 +1,14 @@
 package com.gastos.controlgastosrest.controladores;
 
 import com.gastos.controlgastosrest.DTO.IngresosDTO;
+import com.gastos.controlgastosrest.modelos.IngresoModelo;
 import com.gastos.controlgastosrest.servicios.IngresoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/ingresos")
@@ -39,4 +38,9 @@ public class IngresoControlador {
         }
     }
 
+    @GetMapping("/listar")
+    public  ResponseEntity<?> listarGastos(){
+        List<IngresoModelo> ingresos =  ingresoServicio.listarIngresos();
+        return ResponseEntity.ok(ingresos);
+    }
 }

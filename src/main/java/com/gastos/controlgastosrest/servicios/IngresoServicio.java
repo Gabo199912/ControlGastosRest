@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.List;
 
 @Service
 public class IngresoServicio {
@@ -45,5 +46,9 @@ public class IngresoServicio {
 
         ingresoRepositorio.save(ingresoModelo);
         return true;
+    }
+
+    public List<IngresoModelo> listarIngresos(){
+        return ingresoRepositorio.findAll();
     }
 }
