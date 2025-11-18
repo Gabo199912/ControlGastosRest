@@ -51,4 +51,9 @@ public class IngresoServicio {
     public List<IngresoModelo> listarIngresos(){
         return ingresoRepositorio.findAll();
     }
+
+    public List<IngresoModelo> listarPorUsuario(Integer idUsuario){
+        return ingresoRepositorio.findByUsuario_IdUsuario(idUsuario);
+    }
+
 }

@@ -43,4 +43,11 @@ public class IngresoControlador {
         List<IngresoModelo> ingresos =  ingresoServicio.listarIngresos();
         return ResponseEntity.ok(ingresos);
     }
+
+    @GetMapping("/listarPorUsuario/{idUsuario}")
+    public  ResponseEntity<?> listarGastosPorUsuario(@PathVariable Integer idUsuario){
+        List<IngresoModelo> ingresos =  ingresoServicio.listarPorUsuario(idUsuario);
+        return ResponseEntity.ok(ingresos);
+    }
+
 }
