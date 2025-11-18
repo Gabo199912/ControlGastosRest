@@ -48,6 +48,7 @@ public class IngresoControlador {
     public  ResponseEntity<?> listarGastosPorUsuario(@PathVariable Integer idUsuario){
         List<IngresoModelo> ingresos =  ingresoServicio.listarPorUsuario(idUsuario);
         return ResponseEntity.ok(ingresos);
+
     }
 
 }
