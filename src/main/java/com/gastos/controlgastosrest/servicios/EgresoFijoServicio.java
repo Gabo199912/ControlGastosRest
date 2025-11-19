@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class EgresoFijoServicio {
     private final EgresoFijoRepositorio egresoFijoRepositorio;
@@ -42,5 +44,9 @@ public class EgresoFijoServicio {
         return true;
     }
 
+
+    public List<EgresoFijoModelo> buscarEgresoPorId(Integer idEgreso){
+        return egresoFijoRepositorio.findByUsuario_IdUsuario(idEgreso);
+    }
 
 }

@@ -1,15 +1,14 @@
 package com.gastos.controlgastosrest.controladores;
 
 import com.gastos.controlgastosrest.DTO.EgresoFijoDTO;
+import com.gastos.controlgastosrest.modelos.EgresoFijoModelo;
 import com.gastos.controlgastosrest.servicios.EgresoFijoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/egresos")
@@ -36,5 +35,11 @@ public class EgresoFijoControlador {
             response.put("STATUS", 400);
             return ResponseEntity.badRequest().body(response);
         }
+    }
+
+    @GetMapping("listarPorId/{idUsuario}")
+    public ResponseEntity<?> listarPorUsuario(@PathVariable Integer idUsuario){
+        List<EgresoFijoModelo> egresos =  egresoFijoServicio.buscarEgresoPorId(idUsuario);
+        return ResponseEntity.ok(egresos);
     }
 }
